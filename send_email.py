@@ -20,10 +20,7 @@ def send_email(subject, body,
         port (int, optional): The SMTP server port. Defaults to GMAIL_PORT.
 
     Returns:
-        bool: True if the email was sent successfully, otherwise False.
-
-    Raises:
-        Exception: If an error occurs during the email sending process.
+        tuple: A tuple containing a boolean indicating success or failure and an optional error message.
     """
     # Create a MIMEMultipart message (Multipurpose Internet Mail Extensions)
     message = MIMEMultipart()
@@ -54,7 +51,11 @@ def send_email(subject, body,
             # Send the email after converting the message MIMEMultipart object to string
             server.sendmail(sender, receiver, message.as_string())
 
-            return True
+            # Return success with no error message
+            return True, None
     except Exception as err:
-        # Raise the caught exception for handling at a higher level
-        raise err
+        # Return failure along with the error message
+        error_message = f"An error occurred while sending the email: {err}"
+        return False, error_message
+    
+    

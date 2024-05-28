@@ -24,7 +24,26 @@ SMS_RECEIVER = os.getenv('SMS_RECEIVER')
 # Make sure to download the appropriate ChromeDriver version matching existing Chrome version
 CHROMEDRIVER_PATH = Path("./chromedriver-win64") / "chromedriver.exe"
 
-# base url for Zagreb Stock Exchange, Inc. in Croatia
-AMAZON_PS5_URL = """https://www.amazon.com/PlayStation-5-Console-CFI-1215A01X/dp/B0BCNKKZ91/ref=sr_1_5?dib=eyJ2IjoiMSJ9.IBzp2a7hJYOBBKGDpX2BCBZIe10lLXszNLfnztCx6bAq0UShs9DXhtmLQjoKISKsm7JrXtSWVwMBPPKEWGvz-B7JZIuROeCaoWtJL72JD246bfMqlyvN5lLVD0_e0IPrTEw6uEpo2vCQVBhSjdXNOt3J1nhtxz9LwyWCCOiO4xBDv76iIBgFazV82hxiQJUjXwW-hD4zbazuj_-F_sPgTcDxoHvZvekjYGmhrPLuciE.Ngo1tZgGSthRL7xZ6mrAdJ-np77QxaZwXnfGrYplVBQ&dib_tag=se&keywords=ps5&qid=1716817428&sr=8-5&th=1"""
 
-PS5_PRICE_SELECTOR = "#corePriceDisplay_desktop_feature_div > div.a-section.a-spacing-none.aok-align-center.aok-relative > span.a-price.aok-align-center.reinventPricePriceToPayMargin.priceToPay > span:nth-child(2) > span.a-price-whole"
+USER_AGENT_LIST = [
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/603.3.8 (KHTML, like Gecko) Version/10.1.2 Safari/603.3.8',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
+    'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1.1 Safari/605.1.15',
+    'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko',
+    'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.130 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:93.0) Gecko/20100101 Firefox/93.0',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36',
+]
+
+
+PRODUCT_NAME = 'Bose Home Speaker 500 - Luxe Silver'
+PRODUCT_URL = 'https://www.antaki.com.lb/product/bose-home-speaker-500-luxe-silver/'
+PRODUCT_XPATH = '//*[@id="col-248923422"]/div/div/div/div[2]/p/ins/span/bdi'
+PRODUCT_SELECTOR = '#col-248923422 > div > div > div > div.price-wrapper > p > ins > span > bdi'
+
+PRODUCT_PRICE_PATTERN = r'\b\d+(?:\.\d+)?\b'
