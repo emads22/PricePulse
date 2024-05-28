@@ -6,7 +6,7 @@ The Product Price Tracker Application is a versatile tool designed to track pric
 ## Features
 - **Web Scraping Options**: Users can choose between using BeautifulSoup and Selenium for web scraping, allowing flexibility based on website requirements.
 - **Customizable Product Selection**: Users can select any product by providing its URL and either XPath or CSS selector (functionality must be modified for CSS selector usage) for the price element.
-- **Default Product**: The application showcases its functionality with the **`Bose Home Speaker 500 - Luxe Silver`**, available at [Antaki](https://www.antaki.com.lb/product/bose-home-speaker-500-luxe-silver/).
+- **Default Product**: The application showcases its functionality with the **`Bose Home Speaker 500 - Luxe Silver`**, available at the Lebanese online shop, [Antaki](https://www.antaki.com.lb/product/bose-home-speaker-500-luxe-silver/).
 - **Hourly Price Checks**: The application checks for price changes hourly, ensuring timely notifications.
 - **Email and SMS Notifications**: Users can configure email and SMS settings to receive notifications about price changes.
 - **Receiver Customization**: Users can specify receiver email addresses and phone numbers for notifications.
