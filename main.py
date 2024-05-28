@@ -1,7 +1,6 @@
 import requests
 import time
 import re
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -9,7 +8,8 @@ from web_driver import chrome_web_driver
 from bs4 import BeautifulSoup
 from lxml import etree
 from send_email import send_email
-from app_utils import get_random_user_agent, generate_price_update_email
+from send_sms import send_sms
+from app_utils import get_random_user_agent, generate_price_update_email, generate_price_update_sms
 from constants import *
 
 
@@ -78,6 +78,9 @@ def get_product_price_bs4():
             'accept-language': 'en-US,en;q=0.9'
         }
 
+        # Introduce a delay before sending the request
+        time.sleep(5)
+
         # Send HTTP GET request to the API
         response = requests.get(PRODUCT_URL, headers=headers)
 
@@ -125,27 +128,98 @@ def get_product_price_bs4():
         raise Exception(f"\n-- Error occurred: {e} --\n\n")
 
 
+def notify_price_change_email(product_url, product_name, new_price):
+    """
+    Generate email content for a price update and send the email.
+
+    Args:
+        product_url (str): The URL of the product.
+        product_name (str): The name of the product.
+        new_price (float): The new price of the product.
+
+    Returns:
+        None
+    """
+    # Generate the email subject and content with the price update information
+    subject, content = generate_price_update_email(
+        product_url, product_name, new_price)
+
+    # Send the email with the price update information
+    email_sending, error_message = send_email(subject, content)
+
+    # Check if the email was sent successfully and print appropriate message
+    if email_sending:
+        print(f"\n--- Email notification sent successfully! ---\n")
+    else:
+        print(f"\n--- {error_message} ---\n")
+
+
+def notify_price_change_sms(product_name, new_price):
+    """
+    Generate message content for a price update and send the SMS.
+
+    Args:
+        product_name (str): The name of the product.
+        new_price (float): The new price of the product.
+
+    Returns:
+        None
+    """
+    # Generate the message content with the price update information
+    content = generate_price_update_sms(product_name, new_price)
+
+    # Send the SMS with the price update information
+    sms_sending_status = send_sms(content)
+
+    # Print the status of the SMS sending process
+    print(f"\n--- {sms_sending_status} ---\n")
+
+
 def main():
+    """
 
-    try:
-        product_price = get_product_price_bs4()
+    """
 
-        # product_price = get_product_price_selenium()
+    # Initialize a dictionary to store old and new product prices
+    product_price = {
+        'old': 0,
+        'new': 0
+    }
 
-        # print(product_price)
+    # Run this main function in a loop, pausing for 1 hour between each iteration
+    while True:
 
-        subject, content = generate_price_update_email(PRODUCT_URL, PRODUCT_NAME, product_price)
+        try:
+            # Retrieve the product price using BeautifulSoup
+            product_price['new'] = get_product_price_bs4()
 
-        email_sending, message = send_email(subject, content)
+            # Uncomment this if you want to use Selenium instead
+            # product_price['new'] = get_product_price_selenium()
 
-        if email_sending:
-            print("\n\n--- Email sent successfully. ---\n\n")
-        else:
-            print(f"\n\n--- {message} ---\n\n")
+            # Print the new price for debugging purposes (optional)
+            # print(product_price)
 
+            # Check if the new price is different from the old price
+            if product_price['new'] != product_price['old']:
+                # Update the old price with the new price
+                product_price['old'] = product_price['new']
 
-    except Exception as e:
-        print(f"\n--- An error occured:  {e}---\n\n")
+                # Notify the user about the price change via email
+                notify_price_change_email(
+                    PRODUCT_URL, PRODUCT_NAME, product_price['new'])
+
+                # Notify the user about the price change via sms
+                notify_price_change_sms(PRODUCT_NAME, product_price['new'])
+
+            else:
+                print("\n--- Price has not changed. ---\n")
+
+        except Exception as e:
+            # Handle any exceptions that may occur during the process and print error message
+            print(f"\n--- An error occurred:  {e} ---\n")
+
+        print("\n\n--- Waiting for the next price check in 1 hour... ---\n\n")
+        time.sleep(3600)
 
 
 if __name__ == "__main__":

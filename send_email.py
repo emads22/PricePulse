@@ -57,5 +57,3 @@ def send_email(subject, body,
         # Return failure along with the error message
         error_message = f"An error occurred while sending the email: {err}"
         return False, error_message
-    
-    

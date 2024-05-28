@@ -2,8 +2,8 @@ import vonage
 from constants import NEXMO_API_KEY, NEXMO_API_SECRET, SMS_SENDER, SMS_RECEIVER
 
 
-def send_sms_nexmo(message, sender=SMS_SENDER, receiver=SMS_RECEIVER,
-                   key=NEXMO_API_KEY, secret=NEXMO_API_SECRET):
+def send_sms(message, sender=SMS_SENDER, receiver=SMS_RECEIVER,
+             key=NEXMO_API_KEY, secret=NEXMO_API_SECRET):
     """
     Send an SMS message using the Nexmo (Vonage) API.
 
@@ -34,9 +34,9 @@ def send_sms_nexmo(message, sender=SMS_SENDER, receiver=SMS_RECEIVER,
 
     # Check the response status
     if responseData["messages"][0]["status"] == "0":
-        send_status = "Message sent successfully."
+        send_status = "SMS message sent successfully."
     else:
-        send_status = f"Message failed with error: {
+        send_status = f"SMS message failed with error: {
             responseData['messages'][0]['error-text']}"
 
     return send_status

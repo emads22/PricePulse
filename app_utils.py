@@ -49,3 +49,21 @@ def generate_price_update_email(product_url, product_name, product_price):
     <p>As per the data available at <span style="text-decoration: underline;">{product_url}</span></p>"""
 
     return subject, content
+
+
+def generate_price_update_sms(product_name, product_price):
+    """
+    Generate an SMS content for notifying the price update of a product.
+
+    Args:
+        product_name (str): The name of the product.
+        product_price (str): The updated price of the product.
+
+    Returns:
+        str: The SMS content.
+    """
+    # Format the SMS content
+    content = f'"{product_name.title()}" price update. It currently stands at "${
+        product_price}".'
+
+    return content
