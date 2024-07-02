@@ -14,7 +14,7 @@ To demonstrate its functionality, the application specifically tracks the **`Bos
 - **Receiver Customization**: Users can specify receiver email addresses and phone numbers for notifications.
 - **SMS Service**: By default, the application uses Nexmo (Vonage) for sending SMS notifications, but users are free to choose other SMS service providers as per their preference.
 
-## Technologies Used:
+## Technologies Used
 - **BeautifulSoup4**: For parsing HTML and extracting data from web pages.
 - **lxml**: For processing XML and HTML in a more efficient manner.
 - **python-dotenv**: For managing environment variables.
