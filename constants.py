@@ -45,8 +45,8 @@ USER_AGENT_LIST = [
 # Define the product name, URL, XPath, and CSS selector
 PRODUCT_NAME = 'Bose Home Speaker 500 - Luxe Silver'
 PRODUCT_URL = 'https://www.antaki.com.lb/product/bose-home-speaker-500-luxe-silver/'
-PRODUCT_XPATH = '//*[@id="col-248923422"]/div/div/div/div[2]/p/ins/span/bdi'
-PRODUCT_SELECTOR = '#col-248923422 > div > div > div > div.price-wrapper > p > ins > span > bdi'
+PRODUCT_XPATH = '//*[@id="col-1020938353"]/div/div/div/div[2]/p/span/bdi'
+PRODUCT_SELECTOR = '#col-1020938353 > div > div > div > div.price-wrapper > p > span > bdi'
 
 # Define the pattern to extract the product price from the webpage
 PRODUCT_PRICE_PATTERN = r'\b\d+(?:\.\d+)?\b'

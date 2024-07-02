@@ -177,7 +177,7 @@ def notify_price_change_sms(product_name, new_price):
 
 def main():
     """
-
+    Main function to get product price and send notification whether via email or sms
     """
 
     # Initialize a dictionary to store old and new product prices

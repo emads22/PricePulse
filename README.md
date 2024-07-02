@@ -1,7 +1,9 @@
-# Product Price Tracker
+# PricePulse
 
-## Overview
-The Product Price Tracker Application is a versatile tool designed to track price fluctuations of any product on a website. Offering flexibility and convenience, users can select their desired product by providing its URL and XPath for the price element, enabling them to monitor prices with ease. The application conducts hourly price checks, ensuring timely updates, and notifies users via email and SMS according to their preferences.
+## Overview:
+PricePulse is a versatile Python tool designed to track price fluctuations of any product on a specific website. Offering flexibility and convenience, users can select their desired product by providing its `URL` and `XPath` for the price element. PricePulse keeps running continuously, conducting hourly price checks to ensure timely updates, and notifies users via email and SMS according to their preferences.
+
+To demonstrate its functionality, the application specifically tracks the **`Bose Home Speaker 500 - Luxe Silver`**, available at the Lebanese online shop, [Antaki](https://www.antaki.com.lb/product/bose-home-speaker-500-luxe-silver/). This showcases how users can effectively monitor price changes for their desired products.
 
 ## Features
 - **Web Scraping Options**: Users can choose between using BeautifulSoup and Selenium for web scraping, allowing flexibility based on website requirements.
@@ -11,6 +13,14 @@ The Product Price Tracker Application is a versatile tool designed to track pric
 - **Email and SMS Notifications**: Users can configure email and SMS settings to receive notifications about price changes.
 - **Receiver Customization**: Users can specify receiver email addresses and phone numbers for notifications.
 - **SMS Service**: By default, the application uses Nexmo (Vonage) for sending SMS notifications, but users are free to choose other SMS service providers as per their preference.
+
+## Technologies Used:
+- **BeautifulSoup4**: For parsing HTML and extracting data from web pages.
+- **lxml**: For processing XML and HTML in a more efficient manner.
+- **python-dotenv**: For managing environment variables.
+- **requests**: For making HTTP requests to fetch web page data.
+- **selenium**: For automating web browser interactions.
+- **vonage**: For sending SMS notifications.
 
 ## Setup
 1. Clone the repository.
@@ -24,6 +34,9 @@ The Product Price Tracker Application is a versatile tool designed to track pric
 1. Run the script using `python main.py`.
 2. The application will periodically check for price updates based on the specified time interval and notify users via email and SMS.
 3. Customize product selection, receiver details, scraping options, and selector type as needed in the `constants.py` file.
+
+**Importance of Providing the Correct XPath:**
+It is crucial to provide the exact correct XPath for the price element, as some websites frequently change their structure, which can result in XPaths becoming outdated. Ensuring the correct XPath allows PricePulse to accurately locate and monitor the price of the desired product.
 
 ## Contributing
 Contributions are welcome! Here are some ways you can contribute to the project:
