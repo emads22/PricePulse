@@ -21,6 +21,8 @@ To demonstrate its functionality, the application specifically tracks the **`Bos
 - **requests**: For making HTTP requests to fetch web page data.
 - **selenium**: For automating web browser interactions.
 - **vonage**: For sending SMS notifications.
+- **re**: For regular expression operations and pattern matching.
+- **smtplib**: For sending email notifications.
 
 ## Setup
 1. Clone the repository.
