@@ -35,7 +35,7 @@ To demonstrate its functionality, the application specifically tracks the **`Bos
 2. The application will periodically check for price updates based on the specified time interval and notify users via email and SMS.
 3. Customize product selection, receiver details, scraping options, and selector type as needed in the `constants.py` file.
 
-**Importance of Providing the Correct XPath:**
+## Importance of Providing the Correct XPath
 It is crucial to provide the exact correct XPath for the price element, as some websites frequently change their structure, which can result in XPaths becoming outdated. Ensuring the correct XPath allows PricePulse to accurately locate and monitor the price of the desired product.
 
 ## Contributing
