@@ -1,5 +1,7 @@
 # PricePulse
 
+![PricePulse_logo](./assets/images/PricePulse_logo.png)
+
 ## Overview:
 PricePulse is a versatile Python tool designed to track price fluctuations of any product on a specific website. Offering flexibility and convenience, users can select their desired product by providing its `URL` and `XPath` for the price element. PricePulse keeps running continuously, conducting hourly price checks to ensure timely updates, and notifies users via email and SMS according to their preferences.
 
