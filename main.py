@@ -186,6 +186,9 @@ def main():
         'new': 0
     }
 
+    # Display logo or ASCII art
+    print("\n\n\n\n", ASCII_ART, "\n\n")
+
     # Run this main function in a loop, pausing for 1 hour between each iteration
     while True:
 
